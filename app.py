@@ -1,3 +1,6 @@
+import utils.http_session
+import utils.transport
+import utils.session
 import streamlit as st 
 import pandas as pd 
 import pickle 
@@ -12,8 +15,8 @@ st.header("Movie Recomender System")
 select_value =st.selectbox("Select the movies from dropdown",movies_list) 
 
 
-def recommand(movies): 
-    index = movies[movies['title'] ==movies].index[0]
+def recommand(movie): 
+    index = movies[movies['title'] ==movie].index[0]
     
     distance = sorted(list(enumerate(similarity[index])),reverse=True,key=lambda vector:vector[1]) 
     recommend_movies =[]
